@@ -1,1 +1,172 @@
 # 📚PREFEITURA
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Animado</title>
+  <style>
+    /* Reset básico só dentro do container */
+    .prefeitura-container * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .prefeitura-container {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      min-height: 100vh;
+    }
+
+    .prefeitura-container header {
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Estilos para a logo */
+    .prefeitura-container .brasao {
+      width: 40px; 
+      height: 40px;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prefeitura-container .brasao img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
+
+    .prefeitura-container header h1 {
+      font-size: 20px;
+      flex-grow: 1;
+    }
+
+    /* Ícone hambúrguer */
+    .prefeitura-container .menu-toggle {
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .prefeitura-container .menu-toggle span {
+      display: block;
+      height: 4px;
+      background: #fff;
+      border-radius: 2px;
+      transition: 0.4s;
+      transform-origin: center;
+    }
+
+    /* Hover azul para entrar (quando o menu está fechado) */
+    .prefeitura-container .menu-toggle:not(.active):hover span {
+      background: #007bff;
+    }
+
+    /* Menu lateral */
+    .prefeitura-container nav {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #444;
+      padding-top: 60px;
+      transition: 0.4s;
+      z-index: 1000;
+    }
+
+    .prefeitura-container nav ul {
+      list-style: none;
+    }
+
+    .prefeitura-container nav ul li {
+      margin: 20px 0;
+    }
+
+    .prefeitura-container nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 20px;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .prefeitura-container nav ul li a:hover {
+      background: #666;
+    }
+
+    /* Animação quando abre */
+    .prefeitura-container nav.active {
+      left: 0;
+    }
+
+    /* Transformar ícone em X quando ativo */
+    .prefeitura-container .menu-toggle.active span:nth-child(1) {
+      transform: translateY(10.5px) rotate(45deg);
+    }
+    .prefeitura-container .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .prefeitura-container .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-10.5px) rotate(-45deg);
+    }
+
+    /* Hover vermelho para sair (quando o menu está aberto) */
+    .prefeitura-container .menu-toggle.active:hover span {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="prefeitura-container">
+    <header>
+      <div class="brasao">
+        <img src="imagens/brasao.png" alt="Cidade Espantalho">
+      </div>
+      <h1>Cidade Espantalho</h1>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <nav id="menu">
+      <ul>
+        <li><a href="#">Prefeitura</a></li>
+        <li><a href="#">Casa Da Moeda</a></li>
+        <li><a href="#">Armazém/Produção</a></li>
+        <li><a href="#">Mercadão Do Espantalho</a></li>
+        <li><a href="#">Centro de informações</a></li>
+        <li><a href="#">Quartel De Operações</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <script>
+    // Seleciona os elementos
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    // Evento de clique
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
